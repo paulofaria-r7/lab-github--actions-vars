@@ -29,16 +29,15 @@ jobs:
       - name: "Passo 3: Auditoria com Variaveis Padrao"
         run: echo "O usuário ${{ github.actor }} disparou este workflow no repositório ${{ github.repository }}. O sistema operacional do runner é ${{ runner.os }}."
       
-
-      - name: Passo 4: Gerar Codigo Dinamico
-       run: |
-         RANDOM_NUM=$RANDOM
-         echo "BUILD_HASH=$RANDOM_NUM" >> $GITHUB_ENV
+      - name: "Passo 4: Gerar Codigo Dinamico"
+        run: |
+          RANDOM_NUM=$RANDOM
+          echo "BUILD_HASH=$RANDOM_NUM" >> $GITHUB_ENV
 
       - name: "Passo 5: Usar Codigo Dinamico"
         run: |
-          # TODO: Imprima o BUILD_HASH gerado no passo anterior
-          echo "O hash gerado para este build foi: [VALOR_DO_HASH]"
+          echo "O hash gerado para este build foi: $BUILD_HASH"      
+     
 
   deploy_app:
     name: Deploy da Aplicacao
